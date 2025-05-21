@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
@@ -35,15 +34,15 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Build and analyze
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-        DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-        RAPIDAPI_URL: ${{ secrets.RAPIDAPI_URL }}
-        RAPIDAPI_HOST: ${{ secrets.RAPIDAPI_HOST }}
-        RAPIDAPI_APIKEY: ${{ secrets.RAPIDAPI_APIKEY }}
+- name: Build and analyze
+  env:
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+    DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+    RAPIDAPI_URL: ${{ secrets.RAPIDAPI_URL }}
+    RAPIDAPI_HOST: ${{ secrets.RAPIDAPI_HOST }}
+    RAPIDAPI_APIKEY: ${{ secrets.RAPIDAPI_APIKEY }}
+  run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=MariaAvilaConde_TranslateAP
 
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=MariaAvilaConde_TranslateAP
 
