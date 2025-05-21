@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  copichat:
+    image: copichat
+    ports:
+      - "8086:8086"
+    environment:
+      - DATABASE_URL=r2dbc:postgresql://ep-wild-union-a4ause6j-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require
+      - DATABASE_USERNAME=neondb_owner
+      - DATABASE_PASSWORD=npg_cDxL3daGV8tW
+      - RAPIDAPI_URL=https://copilot5.p.rapidapi.com/copilot
+      - RAPIDAPI_HOST=copilot5.p.rapidapi.com
+      - RAPIDAPI_APIKEY=c213f1fbadmsh32f92d765ad949fp18cc40jsna12a61342bf1
+      - PORT=8086

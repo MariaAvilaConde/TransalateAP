@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: TranslateAI
+
+  r2dbc:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+
+server:
+  port: ${PORT:8086}
+
+rapidapi:
+  url: ${RAPIDAPI_URL}
+  host: ${RAPIDAPI_HOST}
+  apikey: ${RAPIDAPI_APIKEY}
+
+
+#spring.r2dbc.url=r2dbc:postgresql://ep-wild-union-a4ause6j-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require
+#spring.r2dbc.username=neondb_owner
+#spring.r2dbc.password=npg_cDxL3daGV8tW
+
+
+
+

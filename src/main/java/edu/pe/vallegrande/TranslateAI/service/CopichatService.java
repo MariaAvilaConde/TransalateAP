@@ -48,7 +48,7 @@ public class CopichatService {
             return Mono.error(e);
         }
 
-        HttpRequest request = HttpRequest.newBuilder()
+       HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://copilot5.p.rapidapi.com/copilot"))
                 .header("x-rapidapi-key", "c213f1fbadmsh32f92d765ad949fp18cc40jsna12a61342bf1")
                 .header("x-rapidapi-host", "copilot5.p.rapidapi.com")
