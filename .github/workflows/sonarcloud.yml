@@ -4,11 +4,12 @@ on:
   push:
     branches:
       - main
+      
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
       - main
-
+ 
 jobs:
   build:
     name: Build and analyze
@@ -17,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -50,6 +51,4 @@ jobs:
           RAPIDAPI_APIKEY: ${{ secrets.RAPIDAPI_APIKEY }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
              -Dsonar.projectKey=MariaAvilaConde_TransalateAP \
-             -Dsonar.organization=mariaavilaconde \
-             -Dsonar.host.url=https://sonarcloud.io \
-             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+             -Dsonar.organization=mariaavilaconde
