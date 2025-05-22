@@ -13,14 +13,14 @@
   </parent>
 
   <groupId>edu.pe.vallegrande</groupId>
-  <artifactId>TranslateAI</artifactId>
+  <artifactId>TranslateAP</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>TranslateAI</name>
+  <name>TranslateAP</name>
   <description>Demo de traduccion</description>
 
   <properties>
     <java.version>17</java.version>
-    <sonar.projectKey>MariaAvilaConde_TranslateAI</sonar.projectKey>
+    <sonar.projectKey>MariaAvilaConde_TranslateAP</sonar.projectKey>
     <sonar.organization>mariaavilaconde</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
