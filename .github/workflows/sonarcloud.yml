@@ -50,5 +50,5 @@ jobs:
           RAPIDAPI_HOST: ${{ secrets.RAPIDAPI_HOST }}
           RAPIDAPI_APIKEY: ${{ secrets.RAPIDAPI_APIKEY }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-             -Dsonar.projectKey=MariaAvilaConde_TransalateAP \
+             -Dsonar.projectKey=MariaAvilaConde_TransalateAP \ 
              -Dsonar.organization=mariaavilaconde
