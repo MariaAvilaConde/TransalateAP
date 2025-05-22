@@ -3,7 +3,7 @@ name: Docker Hub
 on:
   push:
     branches:
-      - develo
+      - develop
 jobs:
   dockerhub:
     name: Build and Push Docker Image
