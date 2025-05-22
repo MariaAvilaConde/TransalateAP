@@ -3,12 +3,12 @@ name: Sonar Cloud
 on:
   push:
     branches:
-      - main
+      - develop
       
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
-      - main
+      - develop
  
 jobs:
   build:
@@ -49,6 +49,4 @@ jobs:
           RAPIDAPI_URL: ${{ secrets.RAPIDAPI_URL }}
           RAPIDAPI_HOST: ${{ secrets.RAPIDAPI_HOST }}
           RAPIDAPI_APIKEY: ${{ secrets.RAPIDAPI_APIKEY }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-             -Dsonar.projectKey=MariaAvilaConde_TransalateAP \ 
-             -Dsonar.organization=mariaavilaconde
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=MariaAvilaConde_TransalateAP
