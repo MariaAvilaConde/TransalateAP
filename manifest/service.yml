@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: copichat-service
+  namespace: copichat
+spec:
+  selector:
+    app: copichat
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8086
+  type: ClusterIP
