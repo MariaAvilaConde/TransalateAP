@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: frontcopi  # Reemplaza esto por el nombre de tu imagen en Docker Hub
+    container_name: angular-frontend
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

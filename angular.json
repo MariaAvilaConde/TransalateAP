@@ -34,65 +34,65 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "8kb",
+                  "maximumError": "10kb"
                 }
               ],
               "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
           },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "copichat:build:production"
-            },
-            "development": {
-              "buildTarget": "copichat:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "buildTarget": "copichat:build"
+          "development": {
+            "optimization": false,
+            "extractLicenses": false,
+            "sourceMap": true
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+        "defaultConfiguration": "production"
+      },
+      "serve": {
+        "builder": "@angular-devkit/build-angular:dev-server",
+        "configurations": {
+          "production": {
+            "buildTarget": "copichat:build:production"
+          },
+          "development": {
+            "buildTarget": "copichat:build:development"
           }
+        },
+        "defaultConfiguration": "development"
+      },
+      "extract-i18n": {
+        "builder": "@angular-devkit/build-angular:extract-i18n",
+        "options": {
+          "buildTarget": "copichat:build"
+        }
+      },
+      "test": {
+        "builder": "@angular-devkit/build-angular:karma",
+        "options": {
+          "polyfills": [
+            "zone.js",
+            "zone.js/testing"
+          ],
+          "tsConfig": "tsconfig.spec.json",
+          "assets": [
+            "src/favicon.ico",
+            "src/assets"
+          ],
+          "styles": [
+            "src/styles.css"
+          ],
+          "scripts": []
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "6c77b0b5-4d2d-47f1-b1f9-001570e28f3a"
   }
+},
+"cli": {
+  "analytics": "6c77b0b5-4d2d-47f1-b1f9-001570e28f3a"
+}
 }

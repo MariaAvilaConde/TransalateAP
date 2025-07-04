@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CopichatService {
 
-  private apiUrl = 'https://special-fishstick-pj67v9w7q7crr69-8086.app.github.dev/api/copichat';
+  private apiUrl = 'https://supreme-orbit-x6j4rp9w5jvf9vpg-8086.app.github.dev/api/copichat';
 
   constructor(private http: HttpClient) {}
 
