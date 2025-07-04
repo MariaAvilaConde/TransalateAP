@@ -1,28 +1,23 @@
-# Etapa de build con Node.js
-FROM node:20.9.0-alpine AS builder
+# Etapa 1: build Angular
+FROM node:20-alpine AS builder
 
 WORKDIR /app
-
-# Copiar dependencias e instalarlas
-COPY package*.json ./
-RUN npm ci
-
-# Copiar el resto del código y construir
 COPY . .
+RUN npm config set registry https://registry.npmjs.org/
+RUN npm config set strict-ssl false
+RUN npm install
 RUN npm run build
 
-# Verificar contenido de dist
-RUN ls -la dist && echo "Contenido de dist:" && cd dist && ls -la
-
-# Etapa final con NGINX
+# Etapa 2: servir con nginx
 FROM nginx:alpine
 
-# Copiar configuración personalizada de NGINX
-COPY nginx.conf /etc/nginx/nginx.conf
+#  ^|^e ELIMINAR ARCHIVOS POR DEFECTO DE NGINX
+RUN rm -rf /usr/share/nginx/html/*
 
-# Copiar el contenido compilado al servidor web
-COPY --from=builder /app/dist/copichat /usr/share/nginx/html
+#  ^|^e COPIAR TU APLICACI ^sN ANGULAR (dist/.../browser)
+COPY --from=builder /app/dist/copichat/browser/ /usr/share/nginx/html/
+
+#  ^|^e CONFIGURACI ^sN PERSONALIZADA DE NGINX
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
