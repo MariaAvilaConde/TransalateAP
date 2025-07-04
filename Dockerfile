@@ -1,12 +1,13 @@
 # Etapa 1: build Angular
-FROM node:20-alpine AS builder
+FROM node:20-alpine AS build
 
 WORKDIR /app
-COPY . .
-RUN npm config set registry https://registry.npmjs.org/
-RUN npm config set strict-ssl false
+
+# Copiar solo los archivos de dependencias primero
+COPY package*.json ./
 RUN npm install
-RUN npm run build
+COPY . .
+RUN npm run build -- --configuration=production
 
 # Etapa 2: servir con nginx
 FROM nginx:alpine
@@ -15,9 +16,12 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 #  ^|^e COPIAR TU APLICACI ^sN ANGULAR (dist/.../browser)
-COPY --from=builder /app/dist/copichat/browser/ /usr/share/nginx/html/
+COPY --from=build /app/dist/copichat/browser/ /usr/share/nginx/html/
 
 #  ^|^e CONFIGURACI ^sN PERSONALIZADA DE NGINX
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
+
+# Comando por defecto para correr Nginx
+CMD ["nginx", "-g", "daemon off;"]
