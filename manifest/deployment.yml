@@ -1,8 +1,9 @@
+# kubectl apply -f deployment.yml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: copichat-deployment
-  namespace: copichat
+  name: copichat
+  namespace: marianayeli
 spec:
   replicas: 2
   selector:
@@ -14,28 +15,9 @@ spec:
         app: copichat
     spec:
       containers:
-        - name: copichat-container
-          image: marianayeli/copichat:latest
-          ports:
-            - containerPort: 8086
-          env:
-            - name: DATABASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: copichat-secret
-                  key: database_url
-            - name: DATABASE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: copichat-secret
-                  key: database_username
-            - name: DATABASE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: copichat-secret
-                  key: database_password
-            - name: PORT
-              valueFrom:
-                secretKeyRef:
-                  name: copichat-secret
-                  key: port
+        - name: copichat
+          image: marianayeli/copiback:latest
+          imagePullPolicy: IfNotPresent           # Evita bajar la imagen si ya existe
+          envFrom:
+            - secretRef:
+                name: credentials               # Cargar todo el Secret como variables de entorno

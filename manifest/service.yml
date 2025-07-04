@@ -1,13 +1,14 @@
+# kubectl apply -f service.yml
 apiVersion: v1
 kind: Service
 metadata:
-  name: copichat-service
-  namespace: copichat
+  name: copichat
+  namespace: marianayeli
 spec:
-  selector:
-    app: copichat
+  type: NodePort  # Cambia a LoadBalancer si estás en un entorno de nube
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8086
-  type: ClusterIP
+    - port: 80             # Puerto expuesto por el servicio dentro del clúster
+      targetPort: 8086     # Puerto en el contenedor
+      nodePort: 30001      # Solo aplica si el tipo es NodePort (ClusterIP lo ignora)
+  selector:
+    app: copichat          # Debe coincidir con las etiquetas del Deployment

@@ -1,4 +1,11 @@
+# kubectl create namespace marianayeli (COMANDO)
+# kubectl apply -f namespace.yml
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: copichat
+  name: marianayeli
+  labels:
+    environment: development
+    team: marianayeli-vg
+  annotations:
+    owner: marianayeli-vg
