@@ -44,55 +44,55 @@
                 }
               ],
               "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
           },
-          "development": {
-            "optimization": false,
-            "extractLicenses": false,
-            "sourceMap": true
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "copichat:build:production"
+            },
+            "development": {
+              "buildTarget": "copichat:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "copichat:build"
           }
         },
-        "defaultConfiguration": "production"
-      },
-      "serve": {
-        "builder": "@angular-devkit/build-angular:dev-server",
-        "configurations": {
-          "production": {
-            "buildTarget": "copichat:build:production"
-          },
-          "development": {
-            "buildTarget": "copichat:build:development"
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
           }
-        },
-        "defaultConfiguration": "development"
-      },
-      "extract-i18n": {
-        "builder": "@angular-devkit/build-angular:extract-i18n",
-        "options": {
-          "buildTarget": "copichat:build"
-        }
-      },
-      "test": {
-        "builder": "@angular-devkit/build-angular:karma",
-        "options": {
-          "polyfills": [
-            "zone.js",
-            "zone.js/testing"
-          ],
-          "tsConfig": "tsconfig.spec.json",
-          "assets": [
-            "src/favicon.ico",
-            "src/assets"
-          ],
-          "styles": [
-            "src/styles.css"
-          ],
-          "scripts": []
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "6c77b0b5-4d2d-47f1-b1f9-001570e28f3a"
   }
-},
-"cli": {
-  "analytics": "6c77b0b5-4d2d-47f1-b1f9-001570e28f3a"
-}
 }

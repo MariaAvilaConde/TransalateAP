@@ -21,7 +21,7 @@ FROM nginx:alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copiar el contenido compilado al servidor web
-COPY --from=builder /app/dist/gorseia /usr/share/nginx/html
+COPY --from=builder /app/dist/copichat /usr/share/nginx/html
 
 EXPOSE 80
 
