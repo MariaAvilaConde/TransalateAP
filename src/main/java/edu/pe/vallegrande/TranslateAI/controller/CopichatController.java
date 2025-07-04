@@ -65,4 +65,10 @@ public class CopichatController {
     public Flux<Copichat> listarActivos() {
         return service.listarActivos();
     }
+
+    @GetMapping
+public ResponseEntity<String> info() {
+    return ResponseEntity.ok("Copichat API está activa");
+}
+
 }

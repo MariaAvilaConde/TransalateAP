@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: copichat
-  namespace: marianayeli
+  name: microservice-deployment
+  namespace: maria
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: copichat
+      app: microservice
   template:
     metadata:
       labels:
-        app: copichat
+        app: microservice
     spec:
       containers:
-        - name: copichat
-          image: marianayeli/copiback:latest
-          imagePullPolicy: IfNotPresent           # Evita bajar la imagen si ya existe
-          envFrom:
+      - name: microservice
+        image: marianayeli/copichat:latest   # Reemplaza con tu imagen DockerHub
+        imagePullPolicy: IfNotPresent           # Evita bajar la imagen si ya existe
+        envFrom:
             - secretRef:
-                name: credentials               # Cargar todo el Secret como variables de entorno
+                name: microservice-secret               # Cargar todo el Secret como variables de entorno

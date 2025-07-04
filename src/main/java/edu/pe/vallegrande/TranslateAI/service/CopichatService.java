@@ -104,11 +104,11 @@ public class CopichatService {
                 });
     }
 
-    public Flux<Copichat> listarTodo() {
-        return repository.findAll();
+    public Flux<Copichat> listarActivos() {
+        return repository.findByEstadoTrue(); // o el criterio que uses
     }
 
-    public Flux<Copichat> listarActivos() {
-        return repository.findByStatus('A');
+    public Flux<Copichat> listarTodo() {
+        return repository.findAll();
     }
 }

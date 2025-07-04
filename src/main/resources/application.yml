@@ -6,6 +6,9 @@ spring:
     url: ${DATABASE_URL}
     username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
+  sql:
+    init:
+      mode: always
 
 server:
   port: ${PORT:8086}
@@ -15,6 +18,7 @@ rapidapi:
   host: ${RAPIDAPI_HOST}
   apikey: ${RAPIDAPI_APIKEY}
 
+debug: true
 
 #spring.r2dbc.url=r2dbc:postgresql://ep-wild-union-a4ause6j-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require
 #spring.r2dbc.username=neondb_owner

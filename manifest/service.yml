@@ -1,14 +1,13 @@
-# kubectl apply -f service.yml
 apiVersion: v1
 kind: Service
 metadata:
-  name: copichat
-  namespace: marianayeli
+  name: microservice-service
+  namespace: maria
 spec:
-  type: NodePort  # Cambia a LoadBalancer si estás en un entorno de nube
+  type: NodePort  # Expone el puerto a través de un nodo del clúster
   ports:
-    - port: 80             # Puerto expuesto por el servicio dentro del clúster
-      targetPort: 8086     # Puerto en el contenedor
-      nodePort: 30001      # Solo aplica si el tipo es NodePort (ClusterIP lo ignora)
+    - port: 80          # Puerto interno del servicio (acceso desde el clúster)
+      targetPort: 8086   # Puerto donde escucha tu contenedor (en el Pod)
+      nodePort: 30001    # Puerto expuesto desde fuera del clúster (acceso externo)
   selector:
-    app: copichat          # Debe coincidir con las etiquetas del Deployment
+    app: microservice  # Coincide con los labels del Deployment/Pod

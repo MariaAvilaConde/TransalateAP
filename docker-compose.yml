@@ -6,7 +6,7 @@ services:
     ports:
       - "8086:8086"
     environment:
-      - DATABASE_URL=r2dbc:postgresql://ep-wild-union-a4ause6j-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require
+      - DATABASE_URL=r2dbc:postgresql://ep-wild-union-a4ause6j-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
       - DATABASE_USERNAME=neondb_owner
       - DATABASE_PASSWORD=npg_cDxL3daGV8tW
       - RAPIDAPI_URL=https://copilot5.p.rapidapi.com/copilot
