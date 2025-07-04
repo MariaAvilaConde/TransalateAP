@@ -1,0 +1,10 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: Reniec
+  r2dbc:
+    url: r2dbc:postgresql://aws-0-us-east-2.pooler.supabase.com:5432/postgres
+    username: postgres.dpiwwoxoxgewedmrxpcy
+    password: WUSy8Y52InSQwhoI
